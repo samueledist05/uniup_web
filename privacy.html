@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Privacy UniUp</title>
+<meta name="description" content="Informativa sulla privacy dell'app UniUp per gli studenti UniCT della sede di Ragusa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+  /* Layout: una colonna di lettura stretta, indice compatto in alto, riepilogo su campo giallo del marchio UniUp */
+  :root {
+    --bg: #f7f7f4;
+    --surface: #ffffff;
+    --fg: #1b1c1a;
+    --muted: #5d605a;
+    --line: #dcdcd5;
+    --brand: #ffe900;
+    --on-brand: #1b1c1a;
+    --link: #1f4fbf;
+    --font-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+    --font-body: "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141513; --surface: #1d1e1b; --fg: #ececE6; --muted: #a3a59c;
+      --line: #34362f; --brand: #ffe900; --on-brand: #1b1c1a; --link: #8fb0ff;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141513; --surface: #1d1e1b; --fg: #ececE6; --muted: #a3a59c;
+    --line: #34362f; --brand: #ffe900; --on-brand: #1b1c1a; --link: #8fb0ff;
+    color-scheme: dark;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+  .wrap {
+    max-width: 44rem;
+    margin: 0 auto;
+    padding-inline: 1rem;
+    padding-block: 2.5rem 4rem;
+    display: grid;
+    gap: 2.5rem;
+  }
+  a { color: var(--link); text-underline-offset: 0.15em; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 3px; }
+
+  header { display: grid; gap: 0.75rem; }
+  a.wordmark { text-decoration: none; }
+  .wordmark {
+    justify-self: start;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+    background: var(--brand);
+    color: var(--on-brand);
+    padding: 0.15rem 0.55rem;
+    border-radius: 6px;
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2rem, 6vw, 2.75rem);
+    line-height: 1.1;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .meta { color: var(--muted); margin: 0; font-size: 0.95rem; }
+
+  .brief {
+    background: var(--brand);
+    color: var(--on-brand);
+    border-radius: 14px;
+    padding: 1.4rem 1.5rem;
+    display: grid;
+    gap: 0.6rem;
+  }
+  .brief h2 { margin: 0; font-size: 1.15rem; }
+  .brief ul { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.35rem; }
+
+  nav ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.1rem;
+    font-size: 0.95rem;
+  }
+  nav .label {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 0.5rem;
+  }
+
+  main { display: grid; gap: 2.25rem; }
+  section { display: grid; gap: 0.6rem; min-width: 0; }
+  section > * { margin: 0; }
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 1.25;
+    text-wrap: balance;
+  }
+  h3 { font-size: 1.05rem; font-weight: 600; margin-top: 0.6rem; }
+  ul { padding-left: 1.2rem; }
+  li + li { margin-top: 0.25rem; }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; font-size: 0.95rem; min-width: 34rem; }
+  th, td { text-align: left; vertical-align: top; padding: 0.7rem 0.85rem; border-bottom: 1px solid var(--line); }
+  tr:last-child td { border-bottom: 0; }
+  th { font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+
+  .contact {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem 1rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+  }
+  .email { font-weight: 600; user-select: all; word-break: break-all; }
+  button {
+    font: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+    background: transparent;
+    color: var(--fg);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.3rem 0.9rem;
+  }
+  button:hover { border-color: var(--fg); }
+
+  footer { color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--line); padding-top: 1.25rem; }
+</style>
+<style>body { margin: 0; } img { max-width: 100%; }</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <a class="wordmark" href="./">UniUp</a>
+    <h1>Informativa sulla privacy</h1>
+    <p class="meta">App UniUp per Android e iOS · Ultimo aggiornamento: 6 ottobre 2026</p>
+  </header>
+
+  <aside class="brief" aria-labelledby="breve">
+    <h2 id="breve">In breve</h2>
+    <ul>
+      <li>UniUp non ha account e non ci chiede di registrarti.</li>
+      <li>Profilo e libretto restano salvati solo sul tuo telefono: noi non li riceviamo.</li>
+      <li>L'unico dato che esce dal telefono è un codice tecnico per le notifiche push, gestito da Google Firebase.</li>
+      <li>Non usiamo statistiche di utilizzo, profilazione o pubblicità personalizzata, e non vendiamo dati.</li>
+    </ul>
+  </aside>
+
+  <nav aria-label="Indice">
+    <p class="label">Indice</p>
+    <ol>
+      <li><a href="#titolare">Titolare</a></li>
+      <li><a href="#app">L'app</a></li>
+      <li><a href="#dispositivo">Dati sul telefono</a></li>
+      <li><a href="#libretto">Libretto</a></li>
+      <li><a href="#notifiche">Notifiche</a></li>
+      <li><a href="#contenuti">Contenuti</a></li>
+      <li><a href="#permessi">Permessi</a></li>
+      <li><a href="#terzi">Fornitori</a></li>
+      <li><a href="#conservazione">Conservazione</a></li>
+      <li><a href="#diritti">Diritti</a></li>
+      <li><a href="#cancellare">Cancellare i dati</a></li>
+      <li><a href="#minori">Minori</a></li>
+      <li><a href="#modifiche">Modifiche</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <section id="titolare">
+      <h2>1. Titolare del trattamento</h2>
+      <p>Il titolare del trattamento dei dati è <strong>Giuseppe Cascone</strong>. Per qualsiasi domanda sulla privacy o per esercitare i tuoi diritti scrivi a:</p>
+      <div class="contact">
+        <a class="email" id="email" href="mailto:infouniup@gmail.com">infouniup@gmail.com</a>
+        <button type="button" id="copia">Copia indirizzo</button>
+      </div>
+    </section>
+
+    <section id="app">
+      <h2>2. Cos'è UniUp</h2>
+      <p>UniUp è un'app gratuita per chi studia nella sede di Ragusa dell'Università degli Studi di Catania: orario delle lezioni, calendario degli esami, avvisi del corso, aule studio, menù della mensa, eventi e libretto.</p>
+      <p>UniUp è un progetto indipendente sviluppato da Giuseppe Cascone e Andrea Licitra. <strong>Non è un'app ufficiale</strong> e non è affiliata all'Università degli Studi di Catania. Orari, esami e avvisi provengono dalle pagine pubbliche dei siti di ateneo.</p>
+    </section>
+
+    <section id="dispositivo">
+      <h2>3. Dati salvati solo sul tuo telefono</h2>
+      <p>Questi dati sono salvati nella memoria dell'app sul tuo dispositivo. Non vengono inviati a noi né a server di UniUp.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Dato</th><th>A cosa serve</th></tr></thead>
+          <tbody>
+            <tr><td>Nome e cognome</td><td>Personalizzare la schermata iniziale e il profilo</td></tr>
+            <tr><td>Corso e anno di studio</td><td>Mostrare l'orario, gli esami e gli avvisi giusti e scegliere le notifiche del tuo corso</td></tr>
+            <tr><td>Libretto: esami, voti, crediti e date</td><td>Mostrare il libretto, la media e le statistiche</td></tr>
+            <tr><td>Preferenze (tema, notifiche attive, impostazioni della mensa e del libretto)</td><td>Ricordare le tue scelte</td></tr>
+            <tr><td>Copia temporanea dei contenuti scaricati</td><td>Usare l'app anche senza connessione</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Base giuridica: art. 6, par. 1, lett. b) del GDPR (fornire il servizio che hai richiesto). Poiché questi dati non lasciano il dispositivo, noi non possiamo vederli né recuperarli.</p>
+    </section>
+
+    <section id="libretto">
+      <h2>4. Libretto e portale Smart_Edu</h2>
+      <p>Per importare il libretto, UniUp apre al suo interno il portale ufficiale <strong>Smart_Edu</strong> dell'Università di Catania. L'accesso avviene sulla pagina dell'ateneo:</p>
+      <ul>
+        <li>username e password vengono inviati direttamente all'Università di Catania. UniUp non li legge e non li salva;</li>
+        <li>dopo l'accesso, l'app legge dalla pagina del libretto l'elenco degli esami e lo salva solo sul telefono;</li>
+        <li>i cookie di sessione del portale restano sul telefono. Con il pulsante <em>Esci</em> nel libretto cancelli sia gli esami importati sia la sessione.</li>
+      </ul>
+      <p>Per i dati trattati sul portale Smart_Edu il titolare è l'Università degli Studi di Catania, secondo la propria informativa privacy.</p>
+    </section>
+
+    <section id="notifiche">
+      <h2>5. Notifiche push</h2>
+      <p>Se le attivi, UniUp ti avvisa quando cambia qualcosa nel tuo corso: lezioni annullate o spostate, nuove date d'esame, nuovi avvisi. Le notifiche usano <strong>Firebase Cloud Messaging</strong>, un servizio di Google.</p>
+      <ul>
+        <li><strong>Dati trattati:</strong> un codice identificativo dell'installazione dell'app (token), generato da Firebase, e l'iscrizione al canale del tuo corso (per esempio <em>corso_management</em>). Non contiene il tuo nome, la tua email o il tuo numero di telefono.</li>
+        <li><strong>Finalità:</strong> solo l'invio delle notifiche del corso scelto.</li>
+        <li><strong>Base giuridica:</strong> il tuo consenso, dato con il permesso alle notifiche del sistema operativo (art. 6, par. 1, lett. a) GDPR).</li>
+        <li><strong>Come revocarlo:</strong> disattiva le notifiche nelle impostazioni di UniUp o in quelle del telefono, oppure disinstalla l'app.</li>
+      </ul>
+    </section>
+
+    <section id="contenuti">
+      <h2>6. Contenuti scaricati dall'app</h2>
+      <p>Per mostrarti le informazioni aggiornate, l'app scarica contenuti pubblici da:</p>
+      <ul>
+        <li>i siti dei dipartimenti UniCT e il servizio pubblico degli orari SmartEdu (orari, esami, avvisi);</li>
+        <li>Google Firebase Cloud Firestore (menù della mensa, eventi, orari inseriti a mano, elenco degli sponsor);</li>
+        <li>Cloudflare R2 (loghi degli sponsor).</li>
+      </ul>
+      <p>Queste richieste non contengono dati personali. Come per qualsiasi connessione a Internet, il server che risponde riceve l'indirizzo IP del dispositivo e alcune informazioni tecniche e può registrarle per motivi di sicurezza, secondo le proprie regole. Noi non usiamo questi dati.</p>
+      <p>Se tocchi il logo di uno sponsor, un indirizzo su Google Maps o un altro link esterno, si apre un sito di terzi con la sua informativa privacy.</p>
+    </section>
+
+    <section id="permessi">
+      <h2>7. Permessi richiesti</h2>
+      <ul>
+        <li><strong>Notifiche:</strong> per ricevere gli avvisi del corso. Puoi rifiutarlo e usare comunque l'app.</li>
+        <li><strong>Calendario:</strong> solo quando scegli di aggiungere un esame al calendario del telefono. L'app crea l'evento e non legge gli altri appuntamenti.</li>
+        <li><strong>Contatti (solo iOS):</strong> il sistema lo chiede soltanto se, nella schermata del calendario, scegli di invitare qualcuno all'evento. UniUp non legge la rubrica.</li>
+        <li><strong>Internet:</strong> per scaricare orari, esami, avvisi e gli altri contenuti.</li>
+      </ul>
+      <p>UniUp non usa la posizione, la fotocamera, il microfono o le foto.</p>
+    </section>
+
+    <section id="terzi">
+      <h2>8. Fornitori e trasferimenti fuori dall'UE</h2>
+      <p>Per far funzionare l'app ci affidiamo a questi fornitori:</p>
+      <ul>
+        <li><strong>Google Ireland Ltd / Google LLC</strong> (Firebase Cloud Messaging e Cloud Firestore). <a href="https://firebase.google.com/support/privacy" rel="noopener">Privacy e sicurezza di Firebase</a></li>
+        <li><strong>Cloudflare, Inc.</strong> (Cloudflare R2, per i loghi degli sponsor). <a href="https://www.cloudflare.com/privacypolicy/" rel="noopener">Informativa privacy di Cloudflare</a></li>
+      </ul>
+      <p>Questi fornitori possono trattare dati anche negli Stati Uniti. Il trasferimento è coperto dall'EU-U.S. Data Privacy Framework, a cui aderiscono, e dalle clausole contrattuali standard approvate dalla Commissione europea.</p>
+      <p>Non vendiamo, non cediamo e non condividiamo i dati con altri soggetti per finalità di marketing.</p>
+    </section>
+
+    <section id="conservazione">
+      <h2>9. Per quanto tempo conserviamo i dati</h2>
+      <ul>
+        <li><strong>Dati sul telefono:</strong> finché non li cancelli dall'app o non disinstalli UniUp.</li>
+        <li><strong>Token delle notifiche:</strong> finché l'app è installata e le notifiche sono attive. Google invalida automaticamente i token delle app non più usate.</li>
+      </ul>
+    </section>
+
+    <section id="diritti">
+      <h2>10. I tuoi diritti</h2>
+      <p>In base agli articoli 15–22 del GDPR puoi chiedere l'accesso ai tuoi dati, la rettifica, la cancellazione, la limitazione del trattamento e la portabilità, e puoi opporti al trattamento. Puoi revocare il consenso in qualsiasi momento, senza conseguenze sui trattamenti fatti prima della revoca.</p>
+      <p>Scrivi a <strong>infouniup@gmail.com</strong>. Ti rispondiamo entro 30 giorni. Poiché non abbiamo account e non conserviamo dati che ti identificano, quasi sempre il modo più rapido per esercitare questi diritti è usare le funzioni dell'app descritte al punto 11.</p>
+      <p>Hai anche il diritto di presentare reclamo al Garante per la protezione dei dati personali: <a href="https://www.garanteprivacy.it" rel="noopener">www.garanteprivacy.it</a>.</p>
+    </section>
+
+    <section id="cancellare">
+      <h2>11. Come cancellare i tuoi dati</h2>
+      <ul>
+        <li><strong>Profilo:</strong> modifica nome, cognome, corso e anno dalla pagina del profilo. Puoi anche usare un nome di fantasia: serve solo a personalizzare l'app.</li>
+        <li><strong>Libretto:</strong> usa <em>Esci</em> nel libretto per cancellare gli esami importati e la sessione Smart_Edu.</li>
+        <li><strong>Notifiche:</strong> disattivale nelle impostazioni dell'app. Il telefono viene rimosso dal canale del corso.</li>
+        <li><strong>Tutto:</strong> disinstallando UniUp cancelli tutti i dati dell'app dal telefono.</li>
+      </ul>
+    </section>
+
+    <section id="minori">
+      <h2>12. Minori</h2>
+      <p>UniUp è pensata per studenti universitari e non è rivolta a minori di 14 anni. Non raccogliamo consapevolmente dati di minori di 14 anni.</p>
+    </section>
+
+    <section id="sicurezza">
+      <h2>13. Sicurezza</h2>
+      <p>Tutte le connessioni dell'app usano HTTPS. I dati salvati sul telefono sono protetti dai meccanismi di sicurezza del sistema operativo: ti consigliamo di bloccare il telefono con un codice o con la biometria.</p>
+    </section>
+
+    <section id="modifiche">
+      <h2>14. Modifiche a questa informativa</h2>
+      <p>Possiamo aggiornare questa informativa, per esempio quando aggiungiamo nuove funzioni. Pubblichiamo la nuova versione su questa pagina e aggiorniamo la data in alto. Se le modifiche cambiano in modo rilevante il trattamento dei dati, te lo segnaliamo anche nell'app.</p>
+    </section>
+  </main>
+
+  <footer>
+    UniUp · Titolare: Giuseppe Cascone · infouniup@gmail.com · <a href="./">Supporto</a>
+  </footer>
+</div>
+
+<script>
+  (function () {
+    var btn = document.getElementById('copia');
+    var email = document.getElementById('email');
+    btn.addEventListener('click', function () {
+      var testo = email.textContent.trim();
+      function seleziona() {
+        var r = document.createRange();
+        r.selectNodeContents(email);
+        var s = window.getSelection();
+        s.removeAllRanges();
+        s.addRange(r);
+        btn.textContent = 'Selezionato: copia con Ctrl+C';
+      }
+      try {
+        navigator.clipboard.writeText(testo).then(function () {
+          btn.textContent = 'Copiato';
+          setTimeout(function () { btn.textContent = 'Copia indirizzo'; }, 2000);
+        }, seleziona);
+      } catch (e) { seleziona(); }
+    });
+  })();
+</script>
+
+</body>
+</html>
